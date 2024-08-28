@@ -18,8 +18,8 @@
     preemptVuln: NOT_PREEMPTABLE
   priorityLevel: 9
 
- gbr-qos-5qi-5:
-   5qi: 5
+ gbr-qos-5qi-3:
+   5qi: 3
    maxbrUl: 60 Mbps
    maxbrDl: 100 Mbps
    gbrUl: 50 Mbps

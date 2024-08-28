@@ -8,7 +8,7 @@ decision_supi2:
   supi_imsi: "208950000000032"
   pcc_rules:
     - non-gbr-rule-5qi-9
-    - gbr-rule-5qi-5
+    - gbr-rule-5qi-3
 
 decision_supi3:
   supi_imsi: "208950000000033"

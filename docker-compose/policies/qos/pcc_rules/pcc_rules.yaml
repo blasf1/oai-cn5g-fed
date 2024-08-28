@@ -14,10 +14,10 @@ gbr-rule-5qi-1:
   refQosData:
     - gbr-qos-5qi-1
 
-gbr-rule-5qi-5:
+gbr-rule-5qi-3:
   flowInfos:
     - flowDescription: permit out ip from 1.1.1.2 to assigned
       packetFilterUsage: true
   precedence: 8
   refQosData:
-    - gbr-qos-5qi-5
+    - gbr-qos-5qi-3
