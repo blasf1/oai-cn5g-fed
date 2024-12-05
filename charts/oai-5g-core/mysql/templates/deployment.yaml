@@ -253,3 +253,7 @@ spec:
       {{- if .Values.extraVolumes }}
 {{ tpl .Values.extraVolumes . | indent 6 }}
       {{- end }}
+      tolerations:
+        {{- if .Values.tolerations }}
+        {{- toYaml .Values.tolerations | nindent 6 }}
+        {{- end }}
