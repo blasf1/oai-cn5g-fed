@@ -71,15 +71,17 @@ multus:
 config:
   timeZone: "Europe/Paris"
   useAdditionalOptions: "--sa --rfsim --log_config.global_log_options level,nocolor,time"
-  gnbName: "oai-gnb-rfsim"
+  gnbConfFile: "/etc/oai-gnb/gnb.conf"  # Path to gnb.conf on the host
+  usrp: "b2xx" # allowed values rfsim, b2xx, n3xx or x3xx
+  amfhost: "oai-amf.5gcn.svc.cluster.local"  # amf ip-address or service-name oai-amf-svc or 172.21.6.94
+  n2IfName: "eth0"   # if multus.n2Interface.create is true then use n2
+  n3IfName: "eth0"   # if multus.n3Interface.create is true then use n3 or you can only use 1 interface n2 or eth0 
+  # rfsim specific configuration. If you are using USRP then you can ignore this section
+  gnbName: "oai-gnb"
   mcc: "001"   # check the information with AMF, SMF, UPF
   mnc: "01"    # check the information with AMF, SMF, UPF
   tac: "1"     # check the information with AMF
   sst: "1"  #currently only 4 standard values are allowed 1,2,3,4
-  usrp: rfsim   #allowed values rfsim, b2xx, n3xx or x3xx
-  amfhost: "oai-amf"  # amf ip-address or service-name oai-amf-svc or 172.21.6.94
-  n2IfName: "eth0"    # if multus.n2Interface.create is true then use n2
-  n3IfName: "eth0"   #if multus.n3Interface.create is true then use n3 or you can only use 1 interface n2 or eth0 
 
 ## Debugging section
 start:

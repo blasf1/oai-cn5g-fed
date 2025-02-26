@@ -74,9 +74,15 @@ spec:
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
         volumeMounts:
-          - mountPath: /opt/oai-gnb/etc
+          {{- if eq .Values.config.usrp "rfsim" }}
+          - mountPath: /opt/oai-gnb/etc/gnb.conf
+            name: configuration
+            subPath: gnb.conf
+          {{- else }}
+          - mountPath: /opt/oai-gnb/etc/gnb.conf
             name: configuration
             # subPath: gnb.conf
+          {{- end }}
           # USRP B210/B200 Mini
         {{- if eq .Values.config.usrp "b2xx"}}
           - mountPath: /dev/bus/usb/
@@ -165,9 +171,17 @@ spec:
         {{- end}}
       {{- end }}
       volumes:
+      {{- if eq .Values.config.usrp "rfsim" }}
       - configMap:
           name: {{ .Chart.Name }}-configmap
         name: configuration
+      {{- end }}
+      {{- if ne .Values.config.usrp "rfsim" }}
+      - name: configuration
+        hostPath:
+          path: {{ .Values.config.gnbConfFile }}
+          type: File
+      {{- end }}
       {{- if eq .Values.config.usrp "b2xx"}}
       - name: usrp
         hostPath:
