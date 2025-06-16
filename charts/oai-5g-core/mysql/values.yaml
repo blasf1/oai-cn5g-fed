@@ -43,7 +43,6 @@ mysqlDatabase: oai_db
 
 oai5gdatabase: basic #only two values mini or basic nothing else default is basic
 
-
 ## Specify an imagePullPolicy (Required)
 ## It's recommended to change this to 'Always' if the image tag is 'latest'
 ## ref: http://kubernetes.io/docs/user-guide/images/#updating-images
@@ -151,7 +150,6 @@ configurationFiles: {}
 #    ssl-cert=/ssl/server-cert.pem
 #    ssl-key=/ssl/server-key.pem
 
-
 mysqlx:
   port:
     enabled: false
@@ -162,7 +160,8 @@ metrics:
   imageTag: v0.10.0
   imagePullPolicy: IfNotPresent
   resources: {}
-  annotations: {}
+  annotations:
+    {}
     # prometheus.io/scrape: "true"
     # prometheus.io/port: "9104"
   livenessProbe:
@@ -184,8 +183,8 @@ service:
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types
   type: ClusterIP
   port: 3306
-  # nodePort: 32000
-  # loadBalancerIP:
+  nodePort: 32000
+  #loadBalancerIP:
 
 ## Pods Service Account
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
@@ -231,7 +230,6 @@ podLabels: {}
 
 ## Set pod priorityClassName
 # priorityClassName: {}
-
 
 ## Init container resources defaults
 initContainer:
